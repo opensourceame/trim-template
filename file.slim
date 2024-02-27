@@ -14,10 +14,10 @@ html
         h2 Links
         p
             ul
-                li One
-                li Two
-                li Three
-        
+                - for name in names
+                    li
+                        span %name
+
         .alert.alert-info
             a href="/blah.html" This is a link
 

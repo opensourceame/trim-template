@@ -10,17 +10,21 @@ DOCTYPES = {
 
 class NodeParser:
     def __init__(self, node, engine=None):
-        self.node = node
-        self.parsed = ""
-        self.engine = engine
+        self.node      = node
+        self.parsed    = ""
+        self.engine    = engine
+        self.variables = {}
 
     def parse(self):
         if self.node.tag == 'root':
             return self.parse_children()
-        
+
         if self.node.tag == "doctype":
             return DOCTYPES.get(self.node.text, "")
-        
+
+        if self.node.tag == 'for':
+            return self.parse_for()
+
         self.parse_node()
 
         return self.parsed
@@ -42,16 +46,26 @@ class NodeParser:
 
         return self.parsed
 
+    def parse_for(self):
+        var   = self.node.attributes.get('var', '')
+        array = self.node.attributes.get('array', '')
+
+        for t in self.engine.variables.get(array):
+            self.variables[var] = t
+            for node in self.node.children:
+                self.parsed += NodeParser(node, self).parse()
+
+        return self.parsed
+
     def parse_text(self):
         t = self.node.text
         if t == '':
             return ''
-        print(t[0])
-        print(len(t))
+
         if t[0] == '%':
             return self.engine.variables.get(t[1:], '')
         return t
-        
+
     def parse_children(self):
         for node in self.node.children:
             self.parsed += NodeParser(node, self.engine).parse()
@@ -78,5 +92,5 @@ class NodeParser:
                     v = self.engine.variables.get(v[1:], '')
 
                 p += f" {a}=\"{v}\""
-        
+
         return p

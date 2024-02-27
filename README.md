@@ -2,7 +2,7 @@
 
 This is an HTML templating engine for Python inspired by Ruby's Slim template engine.
 
-### Example 
+### Example
 
 Set up Skimpy:
 
@@ -12,6 +12,7 @@ from skimpy.skimpy import Skimpy
 skimpy = Skimpy("file.slim")
 skimpy.set('login_path', '/auth/login')
 skimpy.set('greeting', 'Hello World!')
+skimpy.set('names', ['Alice', 'Bob', 'Charlie'])
 
 output = skimpy.render()
 print(output)
@@ -35,11 +36,13 @@ html
         p.exciting This is the first ever Python Skimpy Template
 
         h2 Links
+
         p
             ul
-                li One
-                li Two
-                li Three
+                - for name in names
+                    li
+                        span %name
+
 
         a href="/blah.html" This is a link
 ```
@@ -65,12 +68,18 @@ Skimpy will render the above template into HTML, as below:
         <h2>Links</h2>
         <p>
             <ul>
-                <li>One</li>
-                <li>Two</li>
-                <li>Three</li>
+                <li>
+                    <span>Alice</span>
+                </li>
+                <li>
+                    <span>Bob</span>
+                </li>
+                <li>
+                    <span>Charlie</span>
+                </li>
             </ul>
         </p>
         <a href="/blah.html">This is a link</a>
     </body>
-</html>    
+</html>
 ```
