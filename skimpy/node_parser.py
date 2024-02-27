@@ -1,6 +1,12 @@
 from bs4 import BeautifulSoup
 
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
+DOCTYPES = {
+    'html':         '<!DOCTYPE html>',
+    'strict':       '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+    'frameset':     '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
+    'transitional': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+}
 
 class NodeParser:
     def __init__(self, node):
@@ -8,6 +14,17 @@ class NodeParser:
         self.parsed = ""
 
     def parse(self):
+        if self.node.tag == 'root':
+            return self.parse_children()
+        
+        if self.node.tag == "doctype":
+            return DOCTYPES.get(self.node.text, "")
+        
+        self.parse_node()
+
+        return self.parsed
+
+    def parse_node(self):
         self.parsed += f"<{self.node.tag}"
         self.parsed += self.attributes()
 
@@ -15,13 +32,18 @@ class NodeParser:
             self.parsed += self.close_node()
         else:
             self.parsed += ">"
-            for node in self.node.children:
-                self.parsed += NodeParser(node).parse()
+            self.parse_children()
 
         self.parsed += self.node.text
 
         if self.node.tag not in SINGLE_TAGS:
             self.parsed += self.close_node()
+
+        return self.parsed
+
+    def parse_children(self):
+        for node in self.node.children:
+            self.parsed += NodeParser(node).parse()
 
         return self.parsed
 
