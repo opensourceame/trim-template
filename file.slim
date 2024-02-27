@@ -1,4 +1,4 @@
-doctype html
+doctype strict
 
 html
     head
@@ -7,7 +7,7 @@ html
         stylesheet src='/some.css'
 
     body
-        h1 Hello World!
+        h1 %greeting
 
         p.exciting This is the first ever Python Skimpy Template
 
@@ -17,5 +17,8 @@ html
                 li One
                 li Two
                 li Three
-
+        
+        .alert.alert-info
             a href="/blah.html" This is a link
+
+        a href=%login_path Log in

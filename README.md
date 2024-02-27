@@ -14,7 +14,8 @@ html
         stylesheet src='/some.css'
 
     body
-        h1 Hello World!
+        .alert
+            h1 Hello World!
 
         p.exciting This is the first ever Python Skimpy Template
 
@@ -25,7 +26,7 @@ html
                 li Two
                 li Three
 
-            a href="/blah.html" This is a link
+        a href="/blah.html" This is a link
 ```
 
 Skimpy will render the above template into standard HTML5.
@@ -40,7 +41,9 @@ Skimpy will render the above template into standard HTML5.
     </head>
 
     <body>
-        <h1>Hello World!</h1>
+        <div class="alert">
+            <h1>Hello World!</h1>
+        </div>
         <p class="exciting">
             This is the first ever Python Skimpy Template
         </p>

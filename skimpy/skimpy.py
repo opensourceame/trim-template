@@ -17,14 +17,17 @@ class Skimpy:
         self.read_template(path)
         self.parse_lines()
 
+    def set(self, key, value):
+        self.variables[key] = value
+
     def read_template(self, path):
         with open(path, "r") as text:
             self.lines = text.readlines()
 
-
     def parse_lines(self):
         node = self.node = Node(-1)
         node.parent = node
+        node.tag = "root"
 
         lines = deque(self.lines)
 
@@ -49,11 +52,11 @@ class Skimpy:
         self.nodes.append(node)
     
     def parse_nodes(self):
-        self.parsed += NodeParser(self.node).parse()
+        self.parsed += NodeParser(self.node, self).parse()
 
     def render(self):
         self.parse_nodes()
-        
+
         if self.options["pretty"]:
             return BeautifulSoup(self.parsed, 'html.parser').prettify()
         
@@ -69,10 +72,14 @@ class Skimpy:
             print('root node')
         else:
             pp = pprint.PrettyPrinter(indent = node.indentation + 1)
-            pp.pprint(node.__dict__)
+            if self.options['debug'] == 'all':
+                pp.pprint(node.__dict__)
+            else:
+                print(' ' * (node.indentation + 4) + node.tag)
 
         for node in node.children:
             self.debug_node(node)
               
     def debug(self):
+        print(self.__dict__)
         self.debug_node(self.node)
