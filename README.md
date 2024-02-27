@@ -44,7 +44,7 @@ html
                         span %name
 
 
-        a href="/blah.html" This is a link
+        a#login-button.btn.btn-primary href=%login_path Login
 ```
 
 Skimpy will render the above template into HTML, as below:
@@ -79,7 +79,7 @@ Skimpy will render the above template into HTML, as below:
                 </li>
             </ul>
         </p>
-        <a href="/blah.html">This is a link</a>
+        <a class="btn btn-primary" href="/auth/login" id="login-button"/>Login</a>
     </body>
 </html>
 ```

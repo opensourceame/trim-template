@@ -1,3 +1,5 @@
+import re
+
 class Node:
     def __init__(self, indentation, line = None):
         self.attributes  = {}
@@ -28,16 +30,23 @@ class Node:
         if self.parts[0] == '-':
             return self.parse_logic_tag()
 
-        if '.' in self.parts[0]:
-            self.tag = 'div'
-            self.attributes["class"] = self.parts[0].replace('.', ' ')
-            return
+        classes = []
+        e = re.split(r'([.#])', self.parts[0])
 
-        tt = self.parts[0].split('.')
-        if len(tt) > 1:
-            class_names = ' '.join(tt[1:])
-            self.attributes["class"] = class_names
-        self.tag = tt[0]
+        self.tag = e[0]
+
+        for i in range(len(e)):
+            if e[i] == '#':
+                self.attributes["id"] = e[i + 1]
+            if e[i] == '.':
+                classes.append(e[i + 1])
+
+        if len(classes) > 0:
+            class_names = " ".join(classes)
+            if self.attributes.get("class"):
+                self.attributes["class"] += f" {class_names}"
+            else:
+                self.attributes["class"] = class_names
 
     def parse_logic_tag(self):
         if self.parts[1] == 'for':

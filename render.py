@@ -9,5 +9,5 @@ skimpy.set('names', ['Alice', 'Bob', 'Charlie'])
 output = skimpy.render()
 print(output)
 
-skimpy.debug()
-#   
+# skimpy.debug()
+#
