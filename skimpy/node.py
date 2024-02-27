@@ -25,6 +25,11 @@ class Node:
         if len(self.parts) == 0:
             breakpoint()
 
+        if '.' in self.parts[0]:
+            self.tag = 'div'
+            self.attributes["class"] = self.parts[0].replace('.', ' ')
+            return
+
         tt = self.parts[0].split('.')
         if len(tt) > 1:
             class_names = ' '.join(tt[1:])
