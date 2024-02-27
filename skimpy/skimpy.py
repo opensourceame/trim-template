@@ -2,15 +2,19 @@ from .node import Node
 from .node_parser import NodeParser
 from collections import deque
 from bs4 import BeautifulSoup
+import pprint
 
 class Skimpy:
     def __init__(self, path):
-        self.nodes = []
-        self.parsed = ""
-        self.variables = {}
+        self.nodes      = []
+        self.parsed     = ""
+        self.variables  = {}
+        self.options    = {
+            "pretty": True,
+            "indent": 4
+        }
         
         self.read_template(path)
-        # self.generate_nodes()
         self.parse_lines()
 
     def read_template(self, path):
@@ -49,11 +53,26 @@ class Skimpy:
 
     def render(self):
         self.parse_nodes()
-        # return BeautifulSoup(self.parsed, 'html.parser').prettify()
+        
+        if self.options["pretty"]:
+            return BeautifulSoup(self.parsed, 'html.parser').prettify()
+        
         return self.parsed
 
+    def left_indent(self, text, indentation = 0):
+        if text == "" or text is None:
+            return ""
+        return ''.join([(indentation * ' ') + l for l in text.splitlines(True)])
+    
+    def debug_node(self, node):
+        if node.indentation < 0:
+            print('root node')
+        else:
+            pp = pprint.PrettyPrinter(indent = node.indentation + 1)
+            pp.pprint(node.__dict__)
+
+        for node in node.children:
+            self.debug_node(node)
+              
     def debug(self):
-        for node in self.nodes:
-            pprint(str(node.indentation) + node.text)
-            for child in node.children:
-                pprint(str(child.indentation) + child.text)
+        self.debug_node(self.node)

@@ -1,5 +1,6 @@
 from skimpy.node import Node
 from skimpy.node_parser import NodeParser
+from skimpy.skimpy import Skimpy
 from pprint import pprint
 
 a = Node(0, 'p')
@@ -18,3 +19,7 @@ d.add_node(f)
 pprint(a.attributes)
 print(c.__dict__)
 print(NodeParser(a).parse())
+
+s = Skimpy('file.slim')
+s.node = a
+s.debug()

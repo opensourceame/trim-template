@@ -13,7 +13,7 @@ class Node:
             return
         
         self.line  = line.strip()
-        self.parts = line.split(" ")
+        self.parts = self.line.split(" ")
         
         if self.line == '':
             return
