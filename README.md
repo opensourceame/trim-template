@@ -4,8 +4,23 @@ This is an HTML templating engine for Python inspired by Ruby's Slim template en
 
 ### Example 
 
+Set up Skimpy:
+
 ```
-doctype html
+from skimpy.skimpy import Skimpy
+
+skimpy = Skimpy("file.slim")
+skimpy.set('login_path', '/auth/login')
+skimpy.set('greeting', 'Hello World!')
+
+output = skimpy.render()
+print(output)
+```
+
+Where `file.slim` (also in the examples dir) contains the following.
+```
+
+doctype strict
 
 html
     head
@@ -15,7 +30,7 @@ html
 
     body
         .alert
-            h1 Hello World!
+            h1 %greeting
 
         p.exciting This is the first ever Python Skimpy Template
 
@@ -29,10 +44,10 @@ html
         a href="/blah.html" This is a link
 ```
 
-Skimpy will render the above template into standard HTML5.
+Skimpy will render the above template into HTML, as below:
 
 ```
-<doctype html/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html>
     <head>
