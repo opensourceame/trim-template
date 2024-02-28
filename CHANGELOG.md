@@ -22,3 +22,4 @@
 * add support for `else` logic
 * allow addition of whitespace using `<` and `>` operators after tag
 * support embedded javascript
+* integrate GitHub Actions
