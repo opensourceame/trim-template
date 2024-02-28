@@ -18,20 +18,16 @@ class NodeParser:
 
     def parse(self):
         match self.node.tag:
-            case 'root':
-                return self.parse_children()
-
             case "doctype":
                 return DOCTYPES.get(self.node.text, "")
-
-            case 'for':
-                return self.parse_for()
-
-            case 'if':
-                return self.parse_if()
-
             case 'else':
                 return self.parse_else()
+            case 'if':
+                return self.parse_if()
+            case 'for':
+                return self.parse_for()
+            case 'root':
+                return self.parse_children()
 
         self.parse_node()
 

@@ -53,12 +53,12 @@ class Node:
 
     def parse_logic_tag(self):
         match self.parts[1]:
-            case 'for':
-                return self.parse_for_tag()
             case 'if':
                 return self.parse_if_tag()
             case 'else':
                 return self.parse_else_tag()
+            case 'for':
+                return self.parse_for_tag()
 
     def parse_if_tag(self):
             self.tag = 'if'
