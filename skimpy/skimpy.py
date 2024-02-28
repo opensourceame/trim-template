@@ -57,6 +57,8 @@ class Skimpy:
             else:
                 while indentation <= node.indentation:
                     node = node.parent
+
+                new_node.prev_sibling = node
                 node = node.parent.add_node(new_node)
 
         self.nodes.append(node)

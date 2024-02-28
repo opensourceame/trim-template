@@ -19,4 +19,4 @@
 * add support for basic `if` logic
 * Skimpy can be optionally be initialized with template text instead of file path
 * start adding some PyTest tests
-
+* add support for `else` logic

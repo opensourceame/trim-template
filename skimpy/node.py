@@ -2,14 +2,17 @@ import re
 
 class Node:
     def __init__(self, indentation, line = None):
-        self.attributes  = {}
-        self.children    = []
-        self.indentation = indentation
-        self.line        = line
-        self.parts       = []
-        self.parent      = None
-        self.tag         = ""
-        self.text        = ""
+        self.attributes   = {}
+        self.children     = []
+        self.indentation  = indentation
+        self.last_result  = None
+        self.line         = line
+        self.parts        = []
+        self.parent       = None
+        self.prev_sibling = None
+        self.post_sibling = None
+        self.tag          = ""
+        self.text         = ""
 
         if line is None:
             return
@@ -49,15 +52,21 @@ class Node:
                 self.attributes["class"] = class_names
 
     def parse_logic_tag(self):
-        if self.parts[1] == 'for':
-            return self.parse_for_tag()
-
-        if self.parts[1] == 'if':
-            return self.parse_if_tag()
+        match self.parts[1]:
+            case 'if':
+                return self.parse_if_tag()
+            case 'else':
+                return self.parse_else_tag()
+            case 'for':
+                return self.parse_for_tag()
 
     def parse_if_tag(self):
             self.tag = 'if'
             self.attributes['condition'] = " ".join(self.parts[2:])
+            return
+
+    def parse_else_tag(self):
+            self.tag = 'else'
             return
 
     def parse_for_tag(self):
