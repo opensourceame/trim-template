@@ -4,7 +4,7 @@ Skimpy is an HTML templating engine for Python inspired by [Ruby's Slim template
 The objective behind Skimpy is to simplify template syntax to a minimal format that
 makes reading the code easier, and eliminates errors, such as when a dev forgets to close a tag.
 
-### Example Template
+#### Example Template
 
 
 ```slim
@@ -41,7 +41,7 @@ html
             span {user.first_name} {user.last_name}
 ```
 
-### Rendered HTML
+#### Rendered HTML
 
 Skimpy will render the above template into HTML, as below:
 
@@ -92,7 +92,7 @@ Skimpy will render the above template into HTML, as below:
 ```
 
 
-## Using Skimpy
+### Using Skimpy
 
 
 ```
@@ -118,14 +118,27 @@ Where `file.slim` (also in the examples dir) contains the following.
 | indentation | integer       | depth of indentation for debugging output         |
 
 
-## Syntax
+### Syntax
 
 See the [USAGE](USAGE.md) markdown file for details on Skimpy syntax and other usage.
 
-## Contributing
+### Contributing
 
 Contributions are welcome.  Fork the project and create a pull request.
 
-## Authors
+### Authors
 
 David Kelly (opensourceame) created the project in Feb 2024
+=======
+`span< hello`  will output `<span> hello</span>`
+`span> hello`  will output `<span>hello </span>`
+`span<> hello` will output `<span> hello </span>`
+
+### Why the name Skimpy?
+
+The dictionary defines skimpy as:
+
+`skimpy(a): short and revealing`
+
+This is exactly what this project aims to do - have short and revealing code that compiles into the less readable format that is HTML.
+>>>>>>> f834f4cd2070b8d4230f5c09ebfdf0c11d3ac521
