@@ -7,8 +7,7 @@ makes reading the code easier, and eliminates errors, such as when a dev forgets
 ### Example Template
 
 
-```
-
+```slim
 doctype strict
 
 html
@@ -32,7 +31,7 @@ html
 
     p.exciting This is the first ever Python Skimpy Template
 
-    h2 Links
+    h2#member-list Members
 
     p
       ul
@@ -40,14 +39,13 @@ html
           li
             / code comment - show the user's names. This line will not render.
             span {user.first_name} {user.last_name}
-
 ```
 
 ### Rendered HTML
 
 Skimpy will render the above template into HTML, as below:
 
-```
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html>
@@ -65,13 +63,17 @@ Skimpy will render the above template into HTML, as below:
         <div class="menu-bar">
             <a class="btn btn-primary" href="/auth/login" id="login-button"/>Login</a>
         </div>
+
         <div class="alert">
             <h1>Hello World!</h1>
         </div>
+
         <p class="exciting">
             This is the first ever Python Skimpy Template
         </p>
-        <h2>Links</h2>
+
+        <h2 id='member-list'>Members</h2>
+
         <p>
             <ul>
                 <li>
