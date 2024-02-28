@@ -13,3 +13,4 @@
 
 * changed the format of template variables from % to {}
 * support more complex variables
+* add Poetry package management
