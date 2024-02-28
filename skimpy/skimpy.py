@@ -5,16 +5,22 @@ from bs4 import BeautifulSoup
 import pprint
 
 class Skimpy:
-    def __init__(self, path):
+    def __init__(self, template):
         self.nodes      = []
         self.parsed     = ""
         self.variables  = {}
         self.options    = {
+            "debug": 'all',
             "pretty": True,
             "indent": 4
         }
-        
-        self.read_template(path)
+
+        # template can be a string or a path to a file
+        if template[0] == "/":
+            self.read_template_file(template)
+        else:
+            self.lines = template.splitlines()
+
         self.parse_lines()
 
     def set(self, key, value):
@@ -33,10 +39,14 @@ class Skimpy:
 
         while len(lines) > 0:
             line = lines.popleft()
-            
-            if line.strip() == "":
+            stripped = line.strip()
+
+            if stripped == "":
                 continue
-            
+
+            if stripped[0] == "/":
+                continue
+
             indentation = len(line) - len(line.lstrip())
             new_node    = Node(indentation, line)
 
@@ -48,9 +58,9 @@ class Skimpy:
                 while indentation <= node.indentation:
                     node = node.parent
                 node = node.parent.add_node(new_node)
-        
+
         self.nodes.append(node)
-    
+
     def parse_nodes(self):
         self.parsed += NodeParser(self.node, self).parse()
 
@@ -59,14 +69,14 @@ class Skimpy:
 
         if self.options["pretty"]:
             return BeautifulSoup(self.parsed, 'html.parser').prettify()
-        
+
         return self.parsed
 
     def left_indent(self, text, indentation = 0):
         if text == "" or text is None:
             return ""
         return ''.join([(indentation * ' ') + l for l in text.splitlines(True)])
-    
+
     def debug_node(self, node):
         if node.indentation < 0:
             print('root node')
@@ -79,7 +89,7 @@ class Skimpy:
 
         for node in node.children:
             self.debug_node(node)
-              
+
     def debug(self):
         print(self.__dict__)
         self.debug_node(self.node)

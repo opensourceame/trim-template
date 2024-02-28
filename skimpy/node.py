@@ -20,8 +20,8 @@ class Node:
         if self.line == '':
             return
 
-        self.parse_attributes()
         self.parse_tag()
+        self.parse_attributes()
 
     def parse_tag(self):
         if len(self.parts) == 0:
@@ -50,12 +50,26 @@ class Node:
 
     def parse_logic_tag(self):
         if self.parts[1] == 'for':
+            return self.parse_for_tag()
+
+        if self.parts[1] == 'if':
+            return self.parse_if_tag()
+
+    def parse_if_tag(self):
+            self.tag = 'if'
+            self.attributes['condition'] = " ".join(self.parts[2:])
+            return
+
+    def parse_for_tag(self):
             self.tag                 = 'for'
             self.attributes['var']   = self.parts[2]
             self.attributes['array'] = self.parts[4]
             return
 
     def parse_attributes(self):
+        if self.parts[0] == '-':
+            return
+
         for a in (self.parts[1:]):
             if '=' in a:
                 key, val = a.split('=')
