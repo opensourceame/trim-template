@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+# import ast
 
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
 DOCTYPES = {
@@ -24,6 +25,9 @@ class NodeParser:
 
         if self.node.tag == 'for':
             return self.parse_for()
+
+        if self.node.tag == 'if':
+            return self.parse_if()
 
         self.parse_node()
 
@@ -56,6 +60,14 @@ class NodeParser:
                 self.parsed += NodeParser(node, self).parse()
 
         return self.parsed
+
+    def parse_if(self):
+        condition = self.node.attributes.get('condition', 'False')
+        result    = eval(condition, self.engine.variables)
+
+        if result:
+            return self.parse_children()
+        return ''
 
     def parse_text(self):
         t = self.node.text

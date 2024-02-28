@@ -43,8 +43,8 @@ html
                     li
                         span {user.first_name} {user.last_name}
 
-
-        a#login-button.btn.btn-primary href=%login_path Login
+        - if not user.logged_in
+            a#login-button.btn.btn-primary href=%login_path Login
 ```
 
 Skimpy will render the above template into HTML, as below:
