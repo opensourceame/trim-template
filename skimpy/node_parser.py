@@ -17,17 +17,21 @@ class NodeParser:
         self.variables = {}
 
     def parse(self):
-        if self.node.tag == 'root':
-            return self.parse_children()
+        match self.node.tag:
+            case 'root':
+                return self.parse_children()
 
-        if self.node.tag == "doctype":
-            return DOCTYPES.get(self.node.text, "")
+            case "doctype":
+                return DOCTYPES.get(self.node.text, "")
 
-        if self.node.tag == 'for':
-            return self.parse_for()
+            case 'for':
+                return self.parse_for()
 
-        if self.node.tag == 'if':
-            return self.parse_if()
+            case 'if':
+                return self.parse_if()
+
+            case 'else':
+                return self.parse_else()
 
         self.parse_node()
 
@@ -67,6 +71,15 @@ class NodeParser:
 
         if result:
             return self.parse_children()
+
+        self.node.last_result = result
+
+        return ''
+
+    def parse_else(self):
+        if not self.node.prev_sibling.last_result:
+            return self.parse_children()
+
         return ''
 
     def parse_text(self):
