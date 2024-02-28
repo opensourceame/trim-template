@@ -59,11 +59,13 @@ class NodeParser:
 
     def parse_text(self):
         t = self.node.text
+
         if t == '':
             return ''
 
-        if t[0] == '%':
-            return self.engine.variables.get(t[1:], '')
+        if '{' in t:
+            t = t.format(**self.engine.variables)
+
         return t
 
     def parse_children(self):
@@ -88,8 +90,8 @@ class NodeParser:
                 if v == '':
                     continue
 
-                if v[0] == '%':
-                    v = self.engine.variables.get(v[1:], '')
+                if '{' in v:
+                    v = v.format(**self.engine.variables)
 
                 p += f" {a}=\"{v}\""
 

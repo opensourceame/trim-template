@@ -12,7 +12,7 @@ from skimpy.skimpy import Skimpy
 skimpy = Skimpy("file.slim")
 skimpy.set('login_path', '/auth/login')
 skimpy.set('greeting', 'Hello World!')
-skimpy.set('names', ['Alice', 'Bob', 'Charlie'])
+skimpy.set('users', users)
 
 output = skimpy.render()
 print(output)
@@ -31,7 +31,7 @@ html
 
     body
         .alert
-            h1 %greeting
+            h1 {greeting}
 
         p.exciting This is the first ever Python Skimpy Template
 
@@ -39,9 +39,9 @@ html
 
         p
             ul
-                - for name in names
+                - for user in users
                     li
-                        span %name
+                        span {user.first_name} {user.last_name}
 
 
         a#login-button.btn.btn-primary href=%login_path Login
@@ -69,13 +69,13 @@ Skimpy will render the above template into HTML, as below:
         <p>
             <ul>
                 <li>
-                    <span>Alice</span>
+                    <span>Stephen Colber</span>
                 </li>
                 <li>
-                    <span>Bob</span>
+                    <span>Bob Marley</span>
                 </li>
                 <li>
-                    <span>Charlie</span>
+                    <span>Charlie Chaplin</span>
                 </li>
             </ul>
         </p>
