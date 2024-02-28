@@ -2,13 +2,8 @@ from skimpy.skimpy import Skimpy
 
 
 template = """
-- if True
-    h1 Hello World!
+span<> hello
 
-- if False
-    h1 Goodbye World!
-- else
-    h1 Woof!
 """
 
 skimpy = Skimpy(template)

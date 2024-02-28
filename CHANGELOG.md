@@ -20,3 +20,4 @@
 * Skimpy can be optionally be initialized with template text instead of file path
 * start adding some PyTest tests
 * add support for `else` logic
+* allow addition of whitespace using `<` and `>` operators after tag

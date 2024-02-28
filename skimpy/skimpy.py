@@ -5,14 +5,14 @@ from bs4 import BeautifulSoup
 import pprint
 
 class Skimpy:
-    def __init__(self, template):
+    def __init__(self, template, pretty=True, debug='all', indent=4):
         self.nodes      = []
         self.parsed     = ""
         self.variables  = {}
         self.options    = {
-            "debug": 'all',
-            "pretty": True,
-            "indent": 4
+            "debug":  debug,
+            "pretty": pretty,
+            "indent": indent
         }
 
         # template can be a string or a path to a file
