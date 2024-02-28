@@ -111,14 +111,21 @@ Where `file.slim` (also in the examples dir) contains the following.
 
 ## Options
 
-| Option | Default Value | Description                                     |
-|--------|---------------|-------------------------------------------------|
-| debug  | all           | debug output format when calling skimpy.debug() |
+| Option      | Values        | Description                                       |
+|-------------|---------------|---------------------------------------------------|
+| debug       | all / tags    | debug output format when calling `skimpy.debug()` |
+| pretty      | True / False  | output pretty HTML                                |
+| indentation | integer       | depth of indentation for debugging output         |
 
-### Whitespace
 
-You can add whitespace before or after text in a tag using `<` and `>`.
+## Syntax
 
-`span< hello`  will output `<span> hello</span>`
-`span> hello`  will output `<span>hello </span>`
-`span<> hello` will output `<span> hello </span>`
+See the [USAGE](USAGE.md) markdown file for details on Skimpy syntax and other usage.
+
+## Contributing
+
+Contributions are welcome.  Fork the project and create a pull request.
+
+## Authors
+
+David Kelly (opensourceame) created the project in Feb 2024
