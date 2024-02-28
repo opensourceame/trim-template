@@ -1,4 +1,3 @@
-import pytest
 from skimpy.skimpy import Skimpy
 
 template = """

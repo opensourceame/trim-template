@@ -1,8 +1,4 @@
 from skimpy.node import Node
-from skimpy.node_parser import NodeParser
-from skimpy.skimpy import Skimpy
-from pprint import pprint
-
 
 def test_node_linking():
     a = Node(0, 'p#test.a.b class="c"')

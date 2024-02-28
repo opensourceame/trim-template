@@ -1,7 +1,4 @@
-from skimpy.node import Node
-from skimpy.node_parser import NodeParser
 from skimpy.skimpy import Skimpy
-from pprint import pprint
 
 template = """
 span hello
