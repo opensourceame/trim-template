@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "skimpy"
+version = "0.1.0"
+description = "A templating engine inspired by Ruby's Slim template engine"
+authors = ["David Kelly"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.0.2"
+bs4 = "^0.0.2"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
