@@ -111,11 +111,11 @@ Where `file.slim` (also in the examples dir) contains the following.
 
 ## Options
 
-| Option      | Values        | Description                                       |
-|-------------|---------------|---------------------------------------------------|
-| debug       | all / tags    | debug output format when calling `skimpy.debug()` |
-| pretty      | True / False  | output pretty HTML                                |
-| indentation | integer       | depth of indentation for debugging output         |
+| Option      | Values         | Description                                       |
+|-------------|----------------|---------------------------------------------------|
+| debug       | `all` / `tags` | debug output format when calling `skimpy.debug()` |
+| pretty      | True / False   | output pretty HTML                                |
+| indentation | integer        | depth of indentation for debugging output         |
 
 
 ### Syntax
@@ -128,17 +128,12 @@ Contributions are welcome.  Fork the project and create a pull request.
 
 ### Authors
 
-David Kelly (opensourceame) created the project in Feb 2024
-=======
-`span< hello`  will output `<span> hello</span>`
-`span> hello`  will output `<span>hello </span>`
-`span<> hello` will output `<span> hello </span>`
+[David Kelly](https://github.com/opensourceame) created the project in Feb 2024
 
 ### Why the name Skimpy?
 
 The dictionary defines skimpy as:
 
-`skimpy(a): short and revealing`
+`skimpy(adj) - short and revealing`
 
-This is exactly what this project aims to do - have short and revealing code that compiles into the less readable format that is HTML.
->>>>>>> f834f4cd2070b8d4230f5c09ebfdf0c11d3ac521
+This is exactly what this project aims to do - have short and revealing syntax.
