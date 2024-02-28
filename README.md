@@ -7,8 +7,7 @@ makes reading the code easier, and eliminates errors, such as when a dev forgets
 ### Example Template
 
 
-```
-
+```slim
 doctype strict
 
 html
@@ -47,7 +46,7 @@ html
 
 Skimpy will render the above template into HTML, as below:
 
-```
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html>
