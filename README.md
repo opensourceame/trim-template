@@ -122,3 +122,11 @@ You can add whitespace before or after text in a tag using `<` and `>`.
 `span< hello`  will output `<span> hello</span>`
 `span> hello`  will output `<span>hello </span>`
 `span<> hello` will output `<span> hello </span>`
+
+### Why the name Skimpy?
+
+The dictionary defines skimpy as:
+
+`skimpy(a): short and revealing`
+
+This is exactly what this project aims to do - have short and revealing code that compiles into the less readable format that is HTML.
