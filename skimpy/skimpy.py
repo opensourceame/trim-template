@@ -86,7 +86,7 @@ class Skimpy:
     def left_indent(self, text, indentation = 0):
         if text == "" or text is None:
             return ""
-        return ''.join([(indentation * ' ') + l for l in text.splitlines(True)])
+        return ''.join([(indentation * ' ') + line for line in text.splitlines(True)])
 
     def debug_node(self, node):
         if node.indentation < 0:

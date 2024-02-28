@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup
-# import ast
-
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
 DOCTYPES = {
     'html':         '<!DOCTYPE html>',
