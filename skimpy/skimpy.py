@@ -55,13 +55,22 @@ class Skimpy:
             elif indentation == node.indentation:
                 node = node.parent.add_node(new_node)
             else:
+
                 while indentation <= node.indentation:
                     node = node.parent
 
                 new_node.prev_sibling = node
                 node = node.parent.add_node(new_node)
 
+            # if the node is an embedded script, read the remaining lines
+            if node.tag =='javascript:':
+                # breakpoint()
+                while (len(lines[0]) - len(lines[0].lstrip())) > node.indentation:
+                    node.text += (lines.popleft()) + "\n"
+
+
         self.nodes.append(node)
+
 
     def parse_nodes(self):
         self.parsed += NodeParser(self.node, self).parse()

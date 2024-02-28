@@ -21,3 +21,4 @@
 * start adding some PyTest tests
 * add support for `else` logic
 * allow addition of whitespace using `<` and `>` operators after tag
+* support embedded javascript

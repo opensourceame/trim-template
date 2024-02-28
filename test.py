@@ -2,8 +2,13 @@ from skimpy.skimpy import Skimpy
 
 
 template = """
-span<> hello
-
+div
+  javascript:
+    console.log('hello world');
+    if (true) {
+        alert('hello world');
+    }
+p
 """
 
 skimpy = Skimpy(template)

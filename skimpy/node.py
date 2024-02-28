@@ -34,6 +34,11 @@ class Node:
 
         tag_part = self.parts[0]
 
+        if tag_part == 'javascript':
+            self.tag = 'script'
+            self.attributes['type'] = 'text/javascript'
+            return
+
         if tag_part[0] == '-':
             return self.parse_logic_tag()
 

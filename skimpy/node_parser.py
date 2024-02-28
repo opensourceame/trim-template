@@ -22,6 +22,8 @@ class NodeParser:
                 return DOCTYPES.get(self.node.text, "")
             case 'else':
                 return self.parse_else()
+            case 'javascript:':
+                return f"\n<script type='javascript'>\n{self.node.text}\n</script>"
             case 'if':
                 return self.parse_if()
             case 'for':

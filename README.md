@@ -17,6 +17,9 @@ html
 
     stylesheet src='/some.css'
 
+    javascript:
+      console.log('embedded JS inside the template');
+
   body
     .menu-bar
       - if user.logged_in
@@ -50,7 +53,12 @@ Skimpy will render the above template into HTML, as below:
 <html>
     <head>
         <title>My HTML title</title>
+
         <stylesheet src="/some.css"></stylesheet>
+
+        <script type='javascript'>
+            console.log('embedded JS inside the template');
+        </script>
     </head>
 
     <body>
