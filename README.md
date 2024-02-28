@@ -30,6 +30,12 @@ html
         stylesheet src='/some.css'
 
     body
+        .menu-bar
+            - if user.logged_in
+                img src={user.profile.image_path}
+            - else
+                a#login-button.btn.btn-primary href=%login_path Login
+
         .alert
             h1 {greeting}
 
@@ -43,8 +49,6 @@ html
                     li
                         span {user.first_name} {user.last_name}
 
-        - if not user.logged_in
-            a#login-button.btn.btn-primary href=%login_path Login
 ```
 
 Skimpy will render the above template into HTML, as below:
@@ -59,6 +63,9 @@ Skimpy will render the above template into HTML, as below:
     </head>
 
     <body>
+        <div class="menu-bar">
+            <a class="btn btn-primary" href="/auth/login" id="login-button"/>Login</a>
+        </div>
         <div class="alert">
             <h1>Hello World!</h1>
         </div>
@@ -79,7 +86,7 @@ Skimpy will render the above template into HTML, as below:
                 </li>
             </ul>
         </p>
-        <a class="btn btn-primary" href="/auth/login" id="login-button"/>Login</a>
+
     </body>
 </html>
 ```

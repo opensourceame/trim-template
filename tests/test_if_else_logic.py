@@ -1,4 +1,3 @@
-import pytest
 from skimpy.skimpy import Skimpy
 
 template = """
@@ -16,13 +15,6 @@ def test_if_logic():
     skimpy.set('animal', 'dog')
     skimpy.options['pretty'] = False
 
-    # skimpy.debug()
-    # print(skimpy.render())
-    output = skimpy.render()
-    breakpoint()
-
     assert skimpy.render() == '<h1>Hello World!</h1><h1>Woof!</h1>'
-
-
 
 test_if_logic()
