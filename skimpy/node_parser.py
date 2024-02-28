@@ -84,8 +84,14 @@ class NodeParser:
         if t == '':
             return ''
 
+        if self.node.ws_prepend:
+            t = ' ' + t
+
         if '{' in t:
             t = t.format(**self.engine.variables)
+
+        if self.node.ws_append:
+            t += ' '
 
         return t
 

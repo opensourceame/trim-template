@@ -13,6 +13,8 @@ class Node:
         self.post_sibling = None
         self.tag          = ""
         self.text         = ""
+        self.ws_prepend   = False
+        self.ws_append    = False
 
         if line is None:
             return
@@ -30,11 +32,21 @@ class Node:
         if len(self.parts) == 0:
             breakpoint()
 
-        if self.parts[0] == '-':
+        tag_part = self.parts[0]
+
+        if tag_part[0] == '-':
             return self.parse_logic_tag()
 
+        if tag_part[-1] == '>':
+            self.ws_append  = True
+            tag_part        = tag_part[:-1]
+
+        if tag_part[-1] == '<':
+            self.ws_prepend = True
+            tag_part        = tag_part[:-1]
+
         classes = []
-        e = re.split(r'([.#])', self.parts[0])
+        e = re.split(r'([.#])', tag_part)
 
         self.tag = e[0]
 

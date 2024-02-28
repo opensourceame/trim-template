@@ -1,55 +1,46 @@
 # Skimpy
 
-This is an HTML templating engine for Python inspired by Ruby's Slim template engine.
+Skimpy is an HTML templating engine for Python inspired by [Ruby's Slim template engine](https://github.com/slim-template/slim).
+The objective behind Skimpy is to simplify template syntax to a minimal format that
+makes reading the code easier, and eliminates errors, such as when a dev forgets to close a tag.
 
-### Example
+### Example Template
 
-Set up Skimpy:
 
-```
-from skimpy.skimpy import Skimpy
-
-skimpy = Skimpy("file.slim")
-skimpy.set('login_path', '/auth/login')
-skimpy.set('greeting', 'Hello World!')
-skimpy.set('users', users)
-
-output = skimpy.render()
-print(output)
-```
-
-Where `file.slim` (also in the examples dir) contains the following.
 ```
 
 doctype strict
 
 html
-    head
-        title My HTML title
+  head
+    title My HTML title
 
-        stylesheet src='/some.css'
+    stylesheet src='/some.css'
 
-    body
-        .menu-bar
-            - if user.logged_in
-                img src={user.profile.image_path}
-            - else
-                a#login-button.btn.btn-primary href=%login_path Login
+  body
+    .menu-bar
+      - if user.logged_in
+        img src={user.profile.image_path}
+      - else
+        a#login-button.btn.btn-primary href={login_path} Login
 
-        .alert
-            h1 {greeting}
+    .alert
+      h1 {greeting}
 
-        p.exciting This is the first ever Python Skimpy Template
+    p.exciting This is the first ever Python Skimpy Template
 
-        h2 Links
+    h2 Links
 
-        p
-            ul
-                - for user in users
-                    li
-                        span {user.first_name} {user.last_name}
+    p
+      ul
+        - for user in users
+          li
+            / code comment - show the user's names. This line will not render.
+            span {user.first_name} {user.last_name}
 
 ```
+
+### Rendered HTML
 
 Skimpy will render the above template into HTML, as below:
 
@@ -86,7 +77,38 @@ Skimpy will render the above template into HTML, as below:
                 </li>
             </ul>
         </p>
-
     </body>
 </html>
 ```
+
+
+## Using Skimpy
+
+
+```
+from skimpy.skimpy import Skimpy
+
+skimpy = Skimpy("file.slim")
+skimpy.set('login_path', '/auth/login')
+skimpy.set('greeting', 'Hello World!')
+skimpy.set('users', users)
+
+output = skimpy.render()
+print(output)
+```
+
+Where `file.slim` (also in the examples dir) contains the following.
+
+## Options
+
+| Option | Default Value | Description                                     |
+|--------|---------------|-------------------------------------------------|
+| debug  | all           | debug output format when calling skimpy.debug() |
+
+### Whitespace
+
+You can add whitespace before or after text in a tag using `<` and `>`.
+
+`span< hello`  will output `<span> hello</span>`
+`span> hello`  will output `<span>hello </span>`
+`span<> hello` will output `<span> hello </span>`
