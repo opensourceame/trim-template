@@ -117,6 +117,13 @@ Where `file.slim` (also in the examples dir) contains the following.
 | pretty      | True / False   | output pretty HTML                                |
 | indentation | integer        | depth of indentation for debugging output         |
 
+## Initialization parameters
+
+Skimpy can be initialized with multiple parameters, the full set shown below:
+
+```
+skimpy = Skimpy('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
+```
 
 ### Syntax
 
