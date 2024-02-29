@@ -117,6 +117,13 @@ Where `file.slim` (also in the examples dir) contains the following.
 | pretty      | True / False   | output pretty HTML                                |
 | indentation | integer        | depth of indentation for debugging output         |
 
+## Initialization parameters
+
+Skimpy can be initialized with multiple parameters, the full set shown below:
+
+```
+skimpy = Skimpy('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
+```
 
 ### Syntax
 
@@ -136,4 +143,4 @@ The dictionary defines skimpy as:
 
 `skimpy(adj) - short and revealing`
 
-This is exactly what this project aims to do - have short and revealing syntax.
+That is exactly what this project aims to do - have short and revealing syntax.

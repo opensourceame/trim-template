@@ -5,10 +5,10 @@ from bs4 import BeautifulSoup
 import pprint
 
 class Skimpy:
-    def __init__(self, template, pretty=True, debug='all', indent=4):
+    def __init__(self, template, pretty=True, debug='all', indent=4, vars={}):
         self.nodes      = []
         self.parsed     = ""
-        self.variables  = {}
+        self.variables  = vars
         self.options    = {
             "debug":  debug,
             "pretty": pretty,
@@ -23,8 +23,11 @@ class Skimpy:
 
         self.parse_lines()
 
-    def set(self, key, value):
-        self.variables[key] = value
+    def set(self, key, value = None):
+        if isinstance(key, dict):
+            self.variables.update(key)
+        else:
+            self.variables[key] = value
 
     def read_template(self, path):
         with open(path, "r") as text:

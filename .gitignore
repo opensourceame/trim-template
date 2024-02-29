@@ -163,3 +163,5 @@ cython_debug/
 #  This ignores the .vscode folder which might contain user-specific settings if it does
 #  not exist in the .editorconfig
 .vscode/
+
+test.py
