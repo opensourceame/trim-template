@@ -10,7 +10,8 @@ div
 p
 """
 
-expected_output = """<div>
+expected_output = """\
+<div>
 <script type='javascript'>
     console.log('hello world');
     if (true) {
