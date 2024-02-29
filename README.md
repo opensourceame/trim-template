@@ -136,4 +136,4 @@ The dictionary defines skimpy as:
 
 `skimpy(adj) - short and revealing`
 
-This is exactly what this project aims to do - have short and revealing syntax.
+That is exactly what this project aims to do - have short and revealing syntax.
