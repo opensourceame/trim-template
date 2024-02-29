@@ -121,7 +121,16 @@ You can write `button class='btn btn-primary'` but it's simpler to write `button
 
 There's no need to write a script tag for your embedded javascript. Just write:
 
-```
+```slim
 javascript:
   console.log('this will be rendered in a script tag');
+```
+
+#### Embedded CSS
+
+No need to write a style tag, simply write:
+
+```slim
+css:
+    h1 { color: 'green'; }
 ```

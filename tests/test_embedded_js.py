@@ -16,7 +16,6 @@ expected_output = """<div>
     if (true) {
         alert('hello world');
     }
-
 </script></div><p></p>"""
 
 def test_embedded_js():
