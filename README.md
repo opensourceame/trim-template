@@ -39,6 +39,8 @@ html
           li
             / code comment - show the user's names. This line will not render.
             span {user.first_name} {user.last_name}
+    /! render the footer
+    #footer Thanks for using Skimpy!
 ```
 
 #### Rendered HTML
@@ -87,6 +89,8 @@ Skimpy will render the above template into HTML, as below:
                 </li>
             </ul>
         </p>
+        <!-- render the footer -->
+        <div id='footer'>Thanks for using Skimpy!</div>
     </body>
 </html>
 ```

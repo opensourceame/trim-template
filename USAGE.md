@@ -97,6 +97,18 @@ You can add comments to a Skimpy file, they will be ignored at render time
 div#menu
 ```
 
+You can also add HTML comments:
+
+```slim
+/! render an HTML comment
+```
+
+which renders to
+
+```html
+<!-- render an HTML comment -->
+```
+
 #### ID attribute shortcut
 
 While you can write `div id='menu'`, it's shorter to simply write `div#menu`
