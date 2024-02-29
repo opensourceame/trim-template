@@ -1,12 +1,17 @@
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
+BOOLEAN_ATTRIBUTES = [
+    'checked', 'selected', 'disabled', 'readonly', 'multiple', 'ismap', 'defer', 'declare', 'noresize', 'nowrap',
+]
+
 DOCTYPES = {
-    'html':         '<!DOCTYPE html>',
-    'basic':        '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">',
-    'mobile':       '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">',
-    'strict':       '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
-    'frameset':     '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
-    'transitional': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+    "html":         '<!DOCTYPE html>',
+    "basic":        '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">',
+    "frameset":     '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
+    "mobile":       '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">',
+    "strict":       '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
+    "transitional": '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 }
+
 
 class NodeParser:
     def __init__(self, node, engine=None):
@@ -17,21 +22,23 @@ class NodeParser:
 
     def parse(self):
         match self.node.tag:
-            case 'css:':
-                return f"\n<style>\n{self.node.text}</style>"
             case 'comment':
                 return f"<!-- {self.node.text} -->"
+            case 'css:':
+                return f"\n<style>\n{self.node.text}</style>"
             case "doctype":
                 return DOCTYPES.get(self.node.text, "")
-            case 'else':
+            case "else":
                 return self.parse_else()
+            case "javascript:":
+                return f"\n<script type='javascript'>\n{self.node.text}\n</script>"
             case 'javascript:':
                 return f"\n<script type='javascript'>\n{self.node.text}</script>"
             case 'if':
                 return self.parse_if()
-            case 'for':
+            case "for":
                 return self.parse_for()
-            case 'root':
+            case "root":
                 return self.parse_children()
 
         self.parse_node()
@@ -40,7 +47,7 @@ class NodeParser:
 
     def parse_node(self):
         self.parsed += f"<{self.node.tag}"
-        self.parsed += self.attributes()
+        self.parsed += self.parse_attributes()
 
         if self.node.tag in SINGLE_TAGS:
             self.parsed += self.close_node()
@@ -56,8 +63,8 @@ class NodeParser:
         return self.parsed
 
     def parse_for(self):
-        var   = self.node.attributes.get('var', '')
-        array = self.node.attributes.get('array', '')
+        var   = self.node.attributes.get("var", "")
+        array = self.node.attributes.get("array", "")
 
         for t in self.engine.variables.get(array):
             self.variables[var] = t
@@ -67,7 +74,7 @@ class NodeParser:
         return self.parsed
 
     def parse_if(self):
-        condition = self.node.attributes.get('condition', 'False')
+        condition = self.node.attributes.get("condition", "False")
         result    = eval(condition, self.engine.variables)
 
         if result:
@@ -75,28 +82,28 @@ class NodeParser:
 
         self.node.last_result = result
 
-        return ''
+        return ""
 
     def parse_else(self):
         if not self.node.prev_sibling.last_result:
             return self.parse_children()
 
-        return ''
+        return ""
 
     def parse_text(self):
         t = self.node.text
 
-        if t == '':
-            return ''
+        if t == "":
+            return ""
 
         if self.node.ws_prepend:
-            t = ' ' + t
+            t = " " + t
 
-        if '{' in t:
+        if "{" in t:
             t = t.format(**self.engine.variables)
 
         if self.node.ws_append:
-            t += ' '
+            t += " "
 
         return t
 
@@ -108,23 +115,38 @@ class NodeParser:
 
     def close_node(self):
         tag = self.node.tag
-        if tag == '':
-            return ''
+        if tag == "":
+            return ""
         if tag in SINGLE_TAGS:
             return "/>"
         else:
             return f"</{tag}>"
 
-    def attributes(self):
-        p = ''
+    def parse_attributes(self):
+        p = ""
         if self.node.has_attributes():
             for a, v in self.node.attributes.items():
-                if v == '':
+                if v == "":
                     continue
 
-                if '{' in v:
+                if "{" in v:
                     v = v.format(**self.engine.variables)
 
-                p += f" {a}=\"{v}\""
+                if a in BOOLEAN_ATTRIBUTES:
+                    v = self.boolean_attribute(a, v)
+                    if v is False:
+                        continue
+
+                p += f' {a}="{v}"'
 
         return p
+
+    def boolean_attribute(self, attribute, value):
+        if attribute in BOOLEAN_ATTRIBUTES:
+            if value == "True":
+                return attribute
+
+        if self.engine.variables.get(value, False):
+            return attribute
+
+        return False

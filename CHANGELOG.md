@@ -28,3 +28,4 @@
 
 * support HTML comments
 * support embedded CSS
+* add boolean attributes

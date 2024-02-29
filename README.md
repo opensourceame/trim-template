@@ -36,6 +36,9 @@ html
 
     h2#member-list Members
 
+    form
+      input type='checkbox' disabled=True checked=True
+
     p
       ul
         - for user in users
@@ -82,6 +85,10 @@ Skimpy will render the above template into HTML, as below:
         </p>
 
         <h2 id='member-list'>Members</h2>
+
+        <form>
+          <input type="checkbox" disabled="disabled" checked="checked"/>
+        </form>
 
         <p>
             <ul>

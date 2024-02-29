@@ -109,6 +109,8 @@ which renders to
 <!-- render an HTML comment -->
 ```
 
+## Attributes
+
 #### ID attribute shortcut
 
 While you can write `div id='menu'`, it's shorter to simply write `div#menu`
@@ -116,6 +118,17 @@ While you can write `div id='menu'`, it's shorter to simply write `div#menu`
 #### Classes shortcut
 
 You can write `button class='btn btn-primary'` but it's simpler to write `button.btn.btn-primary`
+
+#### Boolean attributes
+
+Boolean attributes, such as used on form inputs, are made easier:
+
+```
+input type='text' disabled=True
+input type='checkbox' name='newsletter' checked={user.preferences.newsletter}
+```
+
+## Embedding
 
 #### Embedded Javascript
 
