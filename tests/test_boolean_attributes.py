@@ -20,6 +20,7 @@ def test_boolean_attributes():
     skimpy = Skimpy(template)
     skimpy.set('should_be_checked', True)
     skimpy.set('should_not_be_checked', False)
-    print(skimpy.render())
-    print(expected_output)
-    assert skimpy.render() == expected_output
+
+    output = skimpy.render()
+
+    assert output == expected_output
