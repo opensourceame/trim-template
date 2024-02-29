@@ -50,6 +50,10 @@ class Node:
             self.ws_prepend = True
             tag_part        = tag_part[:-1]
 
+        if tag_part[0] == '/':
+            self.tag = 'comment'
+            return
+
         classes = []
         e = re.split(r'([.#])', tag_part)
 

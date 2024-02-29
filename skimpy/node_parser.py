@@ -29,6 +29,8 @@ class NodeParser:
                 return self.parse_for()
             case 'root':
                 return self.parse_children()
+            case 'comment':
+                return f"<!-- {self.node.text} -->"
 
         self.parse_node()
 

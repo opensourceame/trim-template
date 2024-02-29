@@ -48,6 +48,8 @@ class Skimpy:
                 continue
 
             if stripped[0] == "/":
+                if stripped[1] == "!":
+                    node.add_node(Node(node.indentation, line))
                 continue
 
             indentation = len(line) - len(line.lstrip())
