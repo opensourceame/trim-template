@@ -109,6 +109,8 @@ which renders to
 <!-- render an HTML comment -->
 ```
 
+## Attributes
+
 #### ID attribute shortcut
 
 While you can write `div id='menu'`, it's shorter to simply write `div#menu`
@@ -117,11 +119,31 @@ While you can write `div id='menu'`, it's shorter to simply write `div#menu`
 
 You can write `button class='btn btn-primary'` but it's simpler to write `button.btn.btn-primary`
 
+#### Boolean attributes
+
+Boolean attributes, such as used on form inputs, are made easier:
+
+```
+input type='text' disabled=True
+input type='checkbox' name='newsletter' checked={user.preferences.newsletter}
+```
+
+## Embedding
+
 #### Embedded Javascript
 
 There's no need to write a script tag for your embedded javascript. Just write:
 
-```
+```slim
 javascript:
   console.log('this will be rendered in a script tag');
+```
+
+#### Embedded CSS
+
+No need to write a style tag, simply write:
+
+```slim
+css:
+    h1 { color: 'green'; }
 ```

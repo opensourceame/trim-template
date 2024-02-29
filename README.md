@@ -1,8 +1,8 @@
 # Skimpy
 
 Skimpy is an HTML templating engine for Python inspired by [Ruby's Slim template engine](https://github.com/slim-template/slim).
-The objective behind Skimpy is to simplify template syntax to a minimal format that
-makes reading the code easier, and eliminates errors, such as when a dev forgets to close a tag.
+The objective behind Skimpy is to simplify template syntax to a minimal format that, like Python itself,
+makes use of indentation to indicate how blocks of code should be interpreted.
 
 #### Example Template
 
@@ -20,6 +20,9 @@ html
       console.log('embedded JS inside the template');
 
   body
+    css:
+      .alert { color: 'red'; }
+
     .menu-bar
       - if user.logged_in
         img src={user.profile.image_path}
@@ -32,6 +35,9 @@ html
     p.exciting This is the first ever Python Skimpy Template
 
     h2#member-list Members
+
+    form
+      input type='checkbox' disabled=True checked=True
 
     p
       ul
@@ -62,6 +68,10 @@ Skimpy will render the above template into HTML, as below:
     </head>
 
     <body>
+        <style>
+          .alert { color: 'red'; }
+        </style>
+
         <div class="menu-bar">
             <a class="btn btn-primary" href="/auth/login" id="login-button"/>Login</a>
         </div>
@@ -75,6 +85,10 @@ Skimpy will render the above template into HTML, as below:
         </p>
 
         <h2 id='member-list'>Members</h2>
+
+        <form>
+          <input type="checkbox" disabled="disabled" checked="checked"/>
+        </form>
 
         <p>
             <ul>

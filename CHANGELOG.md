@@ -23,3 +23,9 @@
 * allow addition of whitespace using `<` and `>` operators after tag
 * support embedded javascript
 * integrate GitHub Actions
+
+29-02-2024
+
+* support HTML comments
+* support embedded CSS
+* add boolean attributes

@@ -22,20 +22,24 @@ class NodeParser:
 
     def parse(self):
         match self.node.tag:
+            case 'comment':
+                return f"<!-- {self.node.text} -->"
+            case 'css:':
+                return f"\n<style>\n{self.node.text}</style>"
             case "doctype":
                 return DOCTYPES.get(self.node.text, "")
             case "else":
                 return self.parse_else()
             case "javascript:":
                 return f"\n<script type='javascript'>\n{self.node.text}\n</script>"
-            case "if":
+            case 'javascript:':
+                return f"\n<script type='javascript'>\n{self.node.text}</script>"
+            case 'if':
                 return self.parse_if()
             case "for":
                 return self.parse_for()
             case "root":
                 return self.parse_children()
-            case "comment":
-                return f"<!-- {self.node.text} -->"
 
         self.parse_node()
 
@@ -128,19 +132,21 @@ class NodeParser:
                 if "{" in v:
                     v = v.format(**self.engine.variables)
 
-                if v == 'True':
-                    v = self.boolean_attribute(a)
-
-                if v == 'False':
-                    continue
-
-                if v == 'False':
-                    return ''
+                if a in BOOLEAN_ATTRIBUTES:
+                    v = self.boolean_attribute(a, v)
+                    if v is False:
+                        continue
 
                 p += f' {a}="{v}"'
 
         return p
 
-    def boolean_attribute(tag, attribute):
+    def boolean_attribute(self, attribute, value):
         if attribute in BOOLEAN_ATTRIBUTES:
+            if value == "True":
+                return attribute
+
+        if self.engine.variables.get(value, False):
             return attribute
+
+        return False

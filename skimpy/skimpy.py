@@ -68,11 +68,11 @@ class Skimpy:
                 node = node.parent.add_node(new_node)
 
             # if the node is an embedded script, read the remaining lines
-            if node.tag =='javascript:':
+            if node.tag in ['css:', 'javascript:']:
                 # breakpoint()
                 while (len(lines[0]) - len(lines[0].lstrip())) > node.indentation:
                     node.text += (lines.popleft()) + "\n"
-
+                print(node.__dict__)
 
         self.nodes.append(node)
 
