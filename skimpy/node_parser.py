@@ -17,20 +17,22 @@ class NodeParser:
 
     def parse(self):
         match self.node.tag:
+            case 'css:':
+                return f"\n<style>\n{self.node.text}</style>"
+            case 'comment':
+                return f"<!-- {self.node.text} -->"
             case "doctype":
                 return DOCTYPES.get(self.node.text, "")
             case 'else':
                 return self.parse_else()
             case 'javascript:':
-                return f"\n<script type='javascript'>\n{self.node.text}\n</script>"
+                return f"\n<script type='javascript'>\n{self.node.text}</script>"
             case 'if':
                 return self.parse_if()
             case 'for':
                 return self.parse_for()
             case 'root':
                 return self.parse_children()
-            case 'comment':
-                return f"<!-- {self.node.text} -->"
 
         self.parse_node()
 
