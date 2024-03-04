@@ -29,3 +29,7 @@
 * support HTML comments
 * support embedded CSS
 * add boolean attributes
+
+1-03-2024
+
+* add support for sub-templates

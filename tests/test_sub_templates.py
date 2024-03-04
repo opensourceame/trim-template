@@ -18,7 +18,7 @@ vars = {
 # breakpoint()
 
 def test_sub_templates():
-    skimpy = Skimpy('fixtures/basic_template.skml', vars = vars)
+    skimpy = Skimpy('tests/fixtures/basic_template.skml', vars = vars, pretty = True)
     output = skimpy.render()
     skimpy.debug()
 

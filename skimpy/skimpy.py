@@ -3,7 +3,6 @@ from .node_parser import NodeParser
 from collections import deque
 from bs4 import BeautifulSoup
 import os
-# from os.path import exists
 import pprint
 
 class Skimpy:
