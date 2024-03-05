@@ -2,10 +2,12 @@ from .node import Node
 from .node_parser import NodeParser
 from collections import deque
 from bs4 import BeautifulSoup
+import os
 import pprint
 
 class Skimpy:
     def __init__(self, template, pretty=True, debug='all', indent=4, vars={}):
+        self.dir        = ""
         self.nodes      = []
         self.parsed     = ""
         self.variables  = vars
@@ -15,13 +17,17 @@ class Skimpy:
             "indent": indent
         }
 
-        # template can be a string or a path to a file
-        if template[0] == "/":
+        # check if file exists
+        if os.path.isfile(template):
             self.read_template_file(template)
+            self.dir = os.path.dirname(template)
         else:
             self.lines = template.splitlines()
 
         self.parse_lines()
+
+    def clone(self, template):
+        return Skimpy(template, vars = self.variables)
 
     def set(self, key, value = None):
         if isinstance(key, dict):
@@ -29,7 +35,7 @@ class Skimpy:
         else:
             self.variables[key] = value
 
-    def read_template(self, path):
+    def read_template_file(self, path):
         with open(path, "r") as text:
             self.lines = text.readlines()
 

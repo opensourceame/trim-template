@@ -1,0 +1,2 @@
+div#menu
+  a href={login_path} Login

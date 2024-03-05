@@ -1,3 +1,6 @@
+# from .skimpy import Skimpy
+import os
+
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
 BOOLEAN_ATTRIBUTES = [
     'checked', 'selected', 'disabled', 'readonly', 'multiple', 'ismap', 'defer', 'declare', 'noresize', 'nowrap',
@@ -38,6 +41,12 @@ class NodeParser:
                 return self.parse_if()
             case "for":
                 return self.parse_for()
+            case "render":
+                dir      = self.engine.dir
+                template = dir + '/' + self.node.attributes.get("template")
+                renderer = self.engine.clone(template)
+                # breakpoint()
+                return renderer.render()
             case "root":
                 return self.parse_children()
 
