@@ -29,3 +29,7 @@
 * support HTML comments
 * support embedded CSS
 * add boolean attributes
+
+06-03-2024
+
+* make nested variables in loops work

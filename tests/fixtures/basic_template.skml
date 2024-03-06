@@ -1,0 +1,6 @@
+p
+    - for user in users
+      h1 = user.name
+    - for award in awards
+        - if user.has_award(award)
+           img src=award.image_path

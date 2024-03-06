@@ -18,7 +18,7 @@ class NodeParser:
         self.node      = node
         self.parsed    = ""
         self.engine    = engine
-        self.variables = {}
+        self.variables = engine.variables.copy()
 
     def parse(self):
         match self.node.tag:
