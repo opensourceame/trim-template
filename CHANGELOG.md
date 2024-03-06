@@ -30,6 +30,11 @@
 * support embedded CSS
 * add boolean attributes
 
+1-03-2024
+
+* add support for sub-templates
+
 06-03-2024
 
 * make nested variables in loops work
+

@@ -80,6 +80,13 @@ class Node:
                 return self.parse_else_tag()
             case 'for':
                 return self.parse_for_tag()
+            case "render":
+                return self.parse_render_tag()
+
+    def parse_render_tag(self):
+        self.tag = 'render'
+        self.attributes['template'] = self.parts[2]
+        return
 
     def parse_if_tag(self):
             self.tag = 'if'
