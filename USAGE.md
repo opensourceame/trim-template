@@ -147,3 +147,14 @@ No need to write a style tag, simply write:
 css:
     h1 { color: 'green'; }
 ```
+
+
+### Sub-templates
+
+You can include other templates into a template like so:
+
+```
+doctype html
+body
+  - render 'menu'
+```
