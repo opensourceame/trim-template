@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 expected_output = """\
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ vars = {
 # breakpoint()
 
 def test_sub_templates():
-    skimpy = Skimpy('tests/fixtures/basic_template.skml', vars = vars, pretty = True)
-    output = skimpy.render()
-    skimpy.debug()
+    tmpl = TrimTemplate('tests/fixtures/basic_template.skml', vars = vars, pretty = True)
+    output = tmpl.render()
+    tmpl.debug()
 
     assert output == expected_output

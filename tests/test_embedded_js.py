@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """
 div
@@ -21,9 +21,9 @@ expected_output = """\
 </script></div><p></p>"""
 
 def test_embedded_js():
-    skimpy = Skimpy(template)
-    skimpy.options['pretty'] = False
+    tmpl = TrimTemplate(template)
+    tmpl.options['pretty'] = False
 
-    output = skimpy.render()
+    output = tmpl.render()
     print(output)
     assert output == expected_output

@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='skimpy',
+    name='trim-template',
     version='1.0',
-    packages=['skimpy'],
+    packages=['trim'],
     entry_points={
         'console_scripts': [
-            'skimpy = skimpy.skimpy:main'
+            'trim = trim-template.trim:main'
         ]
     }
 )

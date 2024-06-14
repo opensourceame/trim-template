@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import os
 import pprint
 
-class Skimpy:
+class TrimTemplate:
     def __init__(self, template, pretty=True, debug='all', indent=4, vars={}):
         self.dir        = ""
         self.nodes      = []
@@ -26,7 +26,7 @@ class Skimpy:
         self.parse_lines()
 
     def clone(self, template):
-        return Skimpy(template, vars = self.variables)
+        return TrimTemplate(template, vars = self.variables)
 
     def set(self, key, value = None):
         if isinstance(key, dict):

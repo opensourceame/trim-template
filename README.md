@@ -1,7 +1,7 @@
-# Skimpy
+# Trim-Template
 
-Skimpy is an HTML templating engine for Python inspired by [Ruby's Slim template engine](https://github.com/slim-template/slim).
-The objective behind Skimpy is to simplify template syntax to a minimal format that, like Python itself,
+`trim-template` is an HTML templating engine for Python inspired by [Ruby's Slim template engine](https://github.com/slim-template/slim).
+The objective behind tmpl is to simplify template syntax to a minimal format that, like Python itself,
 makes use of indentation to indicate how blocks of code should be interpreted.
 
 #### Example Template
@@ -32,7 +32,7 @@ html
     .alert
       h1 {greeting}
 
-    p.exciting This is the first ever Python Skimpy Template
+    p.exciting This is the first ever Python Trim-Template
 
     h2#member-list Members
 
@@ -46,12 +46,12 @@ html
             / code comment - show the user's names. This line will not render.
             span {user.first_name} {user.last_name}
     /! render the footer
-    #footer Thanks for using Skimpy!
+    #footer Thanks for using tmpl!
 ```
 
 #### Rendered HTML
 
-Skimpy will render the above template into HTML, as below:
+Trim-Template will render the above template into HTML, as below:
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -81,7 +81,7 @@ Skimpy will render the above template into HTML, as below:
         </div>
 
         <p class="exciting">
-            This is the first ever Python Skimpy Template
+            This is the first ever Python Trim-Template
         </p>
 
         <h2 id='member-list'>Members</h2>
@@ -104,24 +104,24 @@ Skimpy will render the above template into HTML, as below:
             </ul>
         </p>
         <!-- render the footer -->
-        <div id='footer'>Thanks for using Skimpy!</div>
+        <div id='footer'>Thanks for using tmpl!</div>
     </body>
 </html>
 ```
 
 
-### Using Skimpy
+### Using Trim
 
 
 ```
-from skimpy.skimpy import Skimpy
+from trim-template.trim import Trim
 
-skimpy = Skimpy("file.skml")
-skimpy.set('login_path', '/auth/login')
-skimpy.set('greeting', 'Hello World!')
-skimpy.set('users', users)
+tmpl = Trim("file.skml")
+tmpl.set('login_path', '/auth/login')
+tmpl.set('greeting', 'Hello World!')
+tmpl.set('users', users)
 
-output = skimpy.render()
+output = tmpl.render()
 print(output)
 ```
 
@@ -131,21 +131,21 @@ Where `file.slim` (also in the examples dir) contains the following.
 
 | Option      | Values         | Description                                       |
 |-------------|----------------|---------------------------------------------------|
-| debug       | `all` / `tags` | debug output format when calling `skimpy.debug()` |
+| debug       | `all` / `tags` | debug output format when calling `tmpl.debug()` |
 | pretty      | True / False   | output pretty HTML                                |
 | indentation | integer        | depth of indentation for debugging output         |
 
 ## Initialization parameters
 
-Skimpy can be initialized with multiple parameters, the full set shown below:
+tmpl can be initialized with multiple parameters, the full set shown below:
 
 ```
-skimpy = Skimpy('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
+tmpl = tmpl('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
 ```
 
 ### Syntax
 
-See the [USAGE](USAGE.md) markdown file for details on Skimpy syntax and other usage.
+See the [USAGE](USAGE.md) markdown file for details on tmpl syntax and other usage.
 
 ### Contributing
 
@@ -155,10 +155,10 @@ Contributions are welcome.  Fork the project and create a pull request.
 
 [David Kelly](https://github.com/opensourceame) created the project in Feb 2024
 
-### Why the name Skimpy?
+### Why the name tmpl?
 
-The dictionary defines skimpy as:
+The dictionary defines tmpl as:
 
-`skimpy(adj) - short and revealing`
+`tmpl(adj) - short and revealing`
 
 That is exactly what this project aims to do - have short and revealing syntax.

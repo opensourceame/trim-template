@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """
 - if True and True and (True or False)
@@ -13,11 +13,11 @@ template = """
 """
 
 def test_if_logic():
-    skimpy = Skimpy(template)
-    skimpy.set('animal', 'dog')
-    skimpy.options['pretty'] = False
+    tmpl = TrimTemplate(template)
+    tmpl.set('animal', 'dog')
+    tmpl.options['pretty'] = False
 
-    assert skimpy.render() == '<h1>Hello World!</h1><h1>Woof!</h1>'
+    assert tmpl.render() == '<h1>Hello World!</h1><h1>Woof!</h1>'
 
 
 

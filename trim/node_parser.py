@@ -1,4 +1,4 @@
-# from .skimpy import Skimpy
+# from trim import TrimTemplate
 import os
 
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]

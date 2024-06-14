@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """
 head
@@ -13,9 +13,9 @@ expected_output = """<head>
 </style></head><body></body>"""
 
 def test_embedded_js():
-    skimpy = Skimpy(template)
-    skimpy.options['pretty'] = False
+    tmpl = TrimTemplate(template)
+    tmpl.options['pretty'] = False
 
-    output = skimpy.render()
+    output = tmpl.render()
     print(output)
     assert output == expected_output
