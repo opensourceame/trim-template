@@ -116,7 +116,7 @@ Skimpy will render the above template into HTML, as below:
 ```
 from skimpy.skimpy import Skimpy
 
-skimpy = Skimpy("file.slim")
+skimpy = Skimpy("file.skml")
 skimpy.set('login_path', '/auth/login')
 skimpy.set('greeting', 'Hello World!')
 skimpy.set('users', users)

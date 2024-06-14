@@ -1,3 +1,10 @@
+13-06-2024
+
+* better detection of initialising with file or template text
+* update instructions
+* more tests
+* reverse changelog chronological order
+
 27-02-2024
 
 * basic Skimpy class

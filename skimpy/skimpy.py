@@ -16,8 +16,7 @@ class Skimpy:
             "pretty": pretty,
             "indent": indent
         }
-
-        # check if file exists
+        # template can be a string or a path to a file
         if os.path.isfile(template):
             self.read_template_file(template)
             self.dir = os.path.dirname(template)
