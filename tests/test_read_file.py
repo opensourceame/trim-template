@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 expected_output = """<!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@ expected_output = """<!DOCTYPE html>
 """
 
 def test_read_file():
-    skimpy = Skimpy('tests/fixtures/readable_template.skml')
-    output = skimpy.render()
+    tmpl = TrimTemplate('tests/fixtures/readable_template.skml')
+    output = tmpl.render()
 
     assert(output == expected_output)

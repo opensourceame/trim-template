@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """\
 p
@@ -57,8 +57,8 @@ vars = {
 }
 
 def test_nested_variables():
-    skimpy = Skimpy(template, vars = vars)
-    output = skimpy.render()
+    tmpl = TrimTemplate(template, vars = vars)
+    output = tmpl.render()
 
     assert output == html
 

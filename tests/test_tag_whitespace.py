@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """
 span hello
@@ -8,7 +8,7 @@ span<> hello
 """
 
 def test_tag_whitespace():
-    skimpy = Skimpy(template, pretty=False)
-    output = skimpy.render()
+    tmpl = TrimTemplate(template, pretty=False)
+    output = tmpl.render()
 
     assert output == "<span>hello</span><span>hello </span><span> hello</span><span> hello </span>"

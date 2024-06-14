@@ -7,7 +7,7 @@
 
 27-02-2024
 
-* basic Skimpy class
+* basic TrimTemplate class
 * add support for tags
 * add support for tag attributes
 * add build in debugger
@@ -24,7 +24,7 @@
 * support more complex variables
 * add Poetry package management
 * add support for basic `if` logic
-* Skimpy can be optionally be initialized with template text instead of file path
+* TrimTemplate can be optionally be initialized with template text instead of file path
 * start adding some PyTest tests
 * add support for `else` logic
 * allow addition of whitespace using `<` and `>` operators after tag
@@ -44,4 +44,3 @@
 06-03-2024
 
 * make nested variables in loops work
-

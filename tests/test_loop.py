@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 names = ['dog', 'cat', 'bird', 'fish']
 template = """
@@ -8,8 +8,8 @@ ul
 """
 
 def test_tag_whitespace():
-    skimpy = Skimpy(template, pretty=False)
-    skimpy.set('names', names)
-    output = skimpy.render()
+    tmpl = TrimTemplate(template, pretty=False)
+    tmpl.set('names', names)
+    output = tmpl.render()
 
     assert output == '<ul><li>dog</li><li>cat</li><li>bird</li><li>fish</li></ul>'

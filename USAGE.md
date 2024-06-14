@@ -2,7 +2,7 @@
 
 #### Doctype
 
-Skimpy understands multiple DOCTYPEs as shorthand, as below:
+TrimTemplate understands multiple DOCTYPEs as shorthand, as below:
 
 ```slim
 doctype html
@@ -31,7 +31,7 @@ doctype transitional
 
 #### Closed tags
 
-Skimpy automatically closes tags for you, thus:
+TrimTemplate automatically closes tags for you, thus:
 
 ```slim
 img src='/something.png'
@@ -55,7 +55,7 @@ You can add whitespace before or after text in a tag using `<` and `>`.
 
 #### Variables
 
-Skimpy uses variable interpolation that is recognisable to any Python developer.
+TrimTemplate uses variable interpolation that is recognisable to any Python developer.
 
 ```slim
 span {user.first_name}
@@ -90,7 +90,7 @@ ul
 
 #### Comments
 
-You can add comments to a Skimpy file, they will be ignored at render time
+You can add comments to a TrimTemplate file, they will be ignored at render time
 
 ```slim
 / show the main menu

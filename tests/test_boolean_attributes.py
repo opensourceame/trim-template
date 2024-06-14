@@ -1,4 +1,4 @@
-from skimpy.skimpy import Skimpy
+from trim.trim import TrimTemplate
 
 template = """\
 input type="checkbox" checked=True
@@ -17,10 +17,10 @@ expected_output = """\
 """
 
 def test_boolean_attributes():
-    skimpy = Skimpy(template)
-    skimpy.set('should_be_checked', True)
-    skimpy.set('should_not_be_checked', False)
+    tmpl = TrimTemplate(template)
+    tmpl.set('should_be_checked', True)
+    tmpl.set('should_not_be_checked', False)
 
-    output = skimpy.render()
+    output = tmpl.render()
 
     assert output == expected_output
