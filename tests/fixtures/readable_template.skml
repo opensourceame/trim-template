@@ -1,0 +1,6 @@
+doctype html
+html
+    head
+        title A page
+    body
+        h1 Hello world!

@@ -3,6 +3,7 @@ from .node_parser import NodeParser
 from collections import deque
 from bs4 import BeautifulSoup
 import pprint
+import os.path
 
 class Skimpy:
     def __init__(self, template, pretty=True, debug='all', indent=4, vars={}):
@@ -14,10 +15,10 @@ class Skimpy:
             "pretty": pretty,
             "indent": indent
         }
-
+        breakpoint
         # template can be a string or a path to a file
-        if template[0] == "/":
-            self.read_template_file(template)
+        if os.path.isfile(template):
+            self.read_template(template)
         else:
             self.lines = template.splitlines()
 
