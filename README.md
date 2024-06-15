@@ -131,7 +131,7 @@ Where `file.slim` (also in the examples dir) contains the following.
 
 | Option      | Values         | Description                                       |
 |-------------|----------------|---------------------------------------------------|
-| debug       | `all` / `tags` | debug output format when calling `tmpl.debug()` |
+| debug       | `all` / `tags` | debug output format when calling `tmpl.debug()`   |
 | pretty      | True / False   | output pretty HTML                                |
 | indentation | integer        | depth of indentation for debugging output         |
 
