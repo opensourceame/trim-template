@@ -116,7 +116,7 @@ Trim-Template will render the above template into HTML, as below:
 ```
 from trim-template.trim import Trim
 
-tmpl = TrimTemplate("file.skml")
+tmpl = TrimTemplate("file.html.trim")
 tmpl.set('login_path', '/auth/login')
 tmpl.set('greeting', 'Hello World!')
 tmpl.set('users', users)
@@ -125,7 +125,7 @@ output = tmpl.render()
 print(output)
 ```
 
-Where `file.slim` (also in the examples dir) contains the following.
+Where `file.html.trim` (also in the examples dir) contains the following.
 
 ## Options
 
@@ -140,7 +140,7 @@ Where `file.slim` (also in the examples dir) contains the following.
 `TrimTemplate` can be initialized with multiple parameters, the full set shown below:
 
 ```
-tmpl = TrimTemplate('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
+tmpl = TrimTemplate('file.html.trim', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
 ```
 
 ### Syntax
