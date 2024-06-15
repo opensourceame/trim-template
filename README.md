@@ -1,7 +1,7 @@
 # Trim-Template
 
 `trim-template` is an HTML templating engine for Python inspired by [Ruby's Slim template engine](https://github.com/slim-template/slim).
-The objective behind tmpl is to simplify template syntax to a minimal format that, like Python itself,
+The objective behind Trim is to simplify template syntax to a minimal format that, like Python itself,
 makes use of indentation to indicate how blocks of code should be interpreted.
 
 #### Example Template
@@ -46,7 +46,7 @@ html
             / code comment - show the user's names. This line will not render.
             span {user.first_name} {user.last_name}
     /! render the footer
-    #footer Thanks for using tmpl!
+    #footer Thanks for using Trim!
 ```
 
 #### Rendered HTML
@@ -104,7 +104,7 @@ Trim-Template will render the above template into HTML, as below:
             </ul>
         </p>
         <!-- render the footer -->
-        <div id='footer'>Thanks for using tmpl!</div>
+        <div id='footer'>Thanks for using Trim!</div>
     </body>
 </html>
 ```
@@ -116,7 +116,7 @@ Trim-Template will render the above template into HTML, as below:
 ```
 from trim-template.trim import Trim
 
-tmpl = Trim("file.skml")
+tmpl = TrimTemplate("file.skml")
 tmpl.set('login_path', '/auth/login')
 tmpl.set('greeting', 'Hello World!')
 tmpl.set('users', users)
@@ -131,21 +131,21 @@ Where `file.slim` (also in the examples dir) contains the following.
 
 | Option      | Values         | Description                                       |
 |-------------|----------------|---------------------------------------------------|
-| debug       | `all` / `tags` | debug output format when calling `tmpl.debug()` |
+| debug       | `all` / `tags` | debug output format when calling `tmpl.debug()`   |
 | pretty      | True / False   | output pretty HTML                                |
 | indentation | integer        | depth of indentation for debugging output         |
 
 ## Initialization parameters
 
-tmpl can be initialized with multiple parameters, the full set shown below:
+`TrimTemplate` can be initialized with multiple parameters, the full set shown below:
 
 ```
-tmpl = tmpl('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
+tmpl = TrimTemplate('file.skm', pretty=True, debug='all', indent=4, vars={greeting: 'hello'})
 ```
 
 ### Syntax
 
-See the [USAGE](USAGE.md) markdown file for details on tmpl syntax and other usage.
+See the [USAGE](USAGE.md) markdown file for details on trim syntax and other usage.
 
 ### Contributing
 
@@ -154,11 +154,3 @@ Contributions are welcome.  Fork the project and create a pull request.
 ### Authors
 
 [David Kelly](https://github.com/opensourceame) created the project in Feb 2024
-
-### Why the name tmpl?
-
-The dictionary defines tmpl as:
-
-`tmpl(adj) - short and revealing`
-
-That is exactly what this project aims to do - have short and revealing syntax.
