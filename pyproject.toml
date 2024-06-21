@@ -5,6 +5,8 @@ description = "A templating engine inspired by Ruby's Slim template engine"
 authors = ["David Kelly"]
 license = "MIT License"
 readme = "README.md"
+repository = "https://github.com/opensourceme/trim-template"
+keywords = "template trim engine html"
 
 [project]
 name = "trim-template"
@@ -13,7 +15,6 @@ description = "A templating engine inspired by Ruby's Slim template engine"
 authors = [
     {name = "David Kelly", email = "info@futuresbright.com"}
 ]
-license = "MIT License"
 readme = "README.md"
 requires-python = ">=3.12"
 classifiers = [
