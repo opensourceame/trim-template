@@ -4,6 +4,10 @@
 The objective behind Trim is to simplify template syntax to a minimal format that, like Python itself,
 makes use of indentation to indicate how blocks of code should be interpreted.
 
+#### Installation
+
+`pip install trim-template`
+
 #### Example Template
 
 
