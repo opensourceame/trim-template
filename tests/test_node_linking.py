@@ -1,4 +1,4 @@
-from trim.node import Node
+from trim_template.node import Node
 
 def test_node_linking():
     a = Node(0, 'p#test.a.b class="c"')

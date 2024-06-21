@@ -1,4 +1,4 @@
-from trim.trim import TrimTemplate
+from trim_template.trim import TrimTemplate
 
 names = ['dog', 'cat', 'bird', 'fish']
 template = """

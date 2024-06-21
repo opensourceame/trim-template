@@ -1,3 +1,7 @@
+21-06-2024
+
+* make trim-template available on PyPI
+
 13-06-2024
 
 * better detection of initialising with file or template text

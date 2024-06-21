@@ -118,7 +118,7 @@ Trim-Template will render the above template into HTML, as below:
 
 
 ```
-from trim-template.trim import Trim
+from trim_template.trim import TrimTemplate
 
 tmpl = TrimTemplate("file.html.trim")
 tmpl.set('login_path', '/auth/login')

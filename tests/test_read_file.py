@@ -1,4 +1,4 @@
-from trim.trim import TrimTemplate
+from trim_template.trim import TrimTemplate
 
 expected_output = """<!DOCTYPE html>
 <html>
