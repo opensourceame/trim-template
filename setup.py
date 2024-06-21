@@ -3,10 +3,10 @@ from setuptools import setup
 setup(
     name='trim-template',
     version='1.0',
-    packages=['trim'],
+    packages=['trim_template'],
     entry_points={
         'console_scripts': [
-            'trim = trim-template.trim:main'
+            'trim-template = trim_template.trim:main'
         ]
     }
 )
