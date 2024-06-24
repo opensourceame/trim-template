@@ -34,5 +34,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [project.urls]
-Homepage = "https://github.com/opensourceme/trim-template"
-Issues   = "https://github.com/opensourceme/trim-template/issues"
+Homepage = "https://github.com/opensourceame/trim-template"
+Issues   = "https://github.com/opensourceame/trim-template/issues"
