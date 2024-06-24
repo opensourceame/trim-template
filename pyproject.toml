@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "trim-template"
-version = "0.1.2"
+version = "0.1.3"
 description = "A templating engine inspired by Ruby's Slim template engine"
 authors = ["David Kelly"]
 license = "MIT License"
