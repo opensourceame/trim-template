@@ -1,0 +1,11 @@
+header.navbar
+    .nav-brand
+        a href='/' {site_name}
+
+    nav.nav-menu
+        - if user.logged_in
+            a href='/profile' Profile
+            a href='/logout' Logout
+        - else
+            a href='/login' Login
+            a href='/register' Register

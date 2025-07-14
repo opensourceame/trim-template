@@ -1,0 +1,13 @@
+.user-card
+    .user-avatar
+        img src={user.avatar_url} alt='{user.name} avatar'
+
+    .user-info
+        h3 {user.name}
+        p.user-email {user.email}
+        p.user-role {user.role}
+
+    .user-actions
+        a.btn.btn-primary href='/users/{user.id}' View Profile
+        - if user.is_admin
+            a.btn.btn-secondary href='/admin/users/{user.id}' Admin
