@@ -18,7 +18,7 @@ vars = {
 # breakpoint()
 
 def test_sub_templates():
-    tmpl = TrimTemplate('tests/fixtures/basic_template.skml', vars = vars, pretty = True)
+    tmpl = TrimTemplate('tests/fixtures/basic_template.html.trim', vars = vars, pretty = True)
     output = tmpl.render()
     tmpl.debug()
 

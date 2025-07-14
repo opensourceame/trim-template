@@ -16,7 +16,7 @@ expected_output = """<!DOCTYPE html>
 """
 
 def test_read_file():
-    tmpl = TrimTemplate('tests/fixtures/readable_template.skml')
+    tmpl = TrimTemplate('tests/fixtures/readable_template.html.trim')
     output = tmpl.render()
 
     assert(output == expected_output)
