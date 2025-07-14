@@ -5,7 +5,7 @@ name = "beautifulsoup4"
 version = "4.13.4"
 description = "Screen-scraping library"
 optional = false
-python-versions = ">=3.7.0"
+python-versions = "^3.12"
 groups = ["main"]
 files = [
     {file = "beautifulsoup4-4.13.4-py3-none-any.whl", hash = "sha256:9bbbb14bfde9d79f38b8cd5f8c7c85f4b8f2523190ebed90e950a8dea4cb1c4b"},
