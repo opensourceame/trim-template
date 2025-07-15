@@ -25,7 +25,7 @@ jobs:
           pip install poetry pytest
           poetry install --no-root --no-interaction
       - name: Remove Poetry cache
-        run: poetry cache clear . --all -npo
+        run: poetry cache clear . --all -n
       - name: Lint with Ruff
         run: |
           pip install ruff
