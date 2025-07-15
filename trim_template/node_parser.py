@@ -1,6 +1,3 @@
-# from trim import TrimTemplate
-import os
-
 SINGLE_TAGS = ["doctype", "img", "br", "hr", "input", "link", "meta"]
 BOOLEAN_ATTRIBUTES = [
     'checked', 'selected', 'disabled', 'readonly', 'multiple', 'ismap', 'defer', 'declare', 'noresize', 'nowrap',
