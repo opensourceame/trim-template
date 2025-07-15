@@ -1,0 +1,21 @@
+doctype html
+
+html
+    head
+        title {page_title}
+        stylesheet src='/styles.css'
+        meta charset='utf-8'
+
+    body
+        - render header.html.trim
+
+        main.container
+            h1 {main_heading}
+            p {content}
+
+            .user-list
+                h2 Users
+                - for user in users
+                    - render user_card.html.trim
+
+        - render footer.html.trim

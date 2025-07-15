@@ -1,0 +1,8 @@
+footer.site-footer
+    .footer-content
+        p &copy; {current_year} {site_name}. All rights reserved.
+
+    .footer-links
+        a href='/privacy' Privacy Policy
+        a href='/terms' Terms of Service
+        a href='/contact' Contact Us
