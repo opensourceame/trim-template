@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='trim-template',
-    version='1.0',
+    version='1.0.1',
     packages=['trim_template'],
     entry_points={
         'console_scripts': [
