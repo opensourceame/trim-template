@@ -16,11 +16,11 @@ template_vars = {
     'users': [],
 }
 
-def test_simple():
+def basic_example():
     tmpl = TrimTemplate('examples/main.html.trim', vars=template_vars, pretty=True)
     output = tmpl.render()
-    print("=== Simple Test Output ===\n")
+    print("=== Basic Example Output ===\n")
     print(output)
 
 if __name__ == '__main__':
-    test_simple()
+    basic_example()
