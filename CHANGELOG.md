@@ -1,4 +1,12 @@
-21-06-2024
+15-06-2025 - v1.0.1
+
+* Fixed bug in attribute parsing for tags with multiple attributes
+* Improved regex parsing to handle quoted attribute values correctly
+* Added comprehensive test for multi-attribute tags (e.g., meta name='viewport' initial-scale='1')
+* Renamed .skml files to .html.trim and updated all test references
+* Added sub-template examples with user objects in examples directory
+
+21-06-2024 - v1.0.0
 
 * make trim-template available on PyPI
 

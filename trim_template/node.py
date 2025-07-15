@@ -20,7 +20,8 @@ class Node:
             return
 
         self.line  = line.strip()
-        self.parts = self.line.split(" ")
+        # Use regex to split on key='value', key="value", or key=value, or tag
+        self.parts = re.findall(r"[^ \t]+='[^']*'|[^ \t]+=\"[^\"]*\"|[^ \t]+", self.line)
 
         if self.line == '':
             return
@@ -109,8 +110,15 @@ class Node:
 
         for a in (self.parts[1:]):
             if '=' in a:
-                key, val = a.split('=')
-                self.attributes[key] = val.strip('"').strip("'")
+                equal_pos = a.find('=')
+                key = a[:equal_pos].strip('"\'')
+                val = a[equal_pos + 1:]
+
+                # Only strip quotes if both ends are quoted
+                if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
+                    val = val[1:-1]
+
+                self.attributes[key] = val
             else:
                 self.text += a + " "
 
@@ -133,4 +141,4 @@ class Node:
         return self.attributes != []
 
     def attributes(self):
-        return ' '.join(self.attributes)
+        return ' '.join(f'{k}="{v}"' for k, v in self.attributes.items())
