@@ -151,10 +151,20 @@ css:
 
 ### Sub-templates
 
-You can include other templates into a template like so:
+You can include other templates into a template, for example you can create a layout for your site something like this:
 
-```
+```slim
+/ layout.html.trim
+
 doctype html
 body
-  - render 'menu'
+  header
+    - render 'navbar.html.trim'
+  #content
+    - if logged_in
+      aside
+        - render 'sidebar.html.trim'
+      - render content_page
+    - else
+      - render 'paywall_instructions.html.trim'
 ```
